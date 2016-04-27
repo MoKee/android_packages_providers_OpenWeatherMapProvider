@@ -18,12 +18,10 @@
 package org.cyanogenmod.openweathermapprovider;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.SystemClock;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import mokee.providers.WeatherContract;
@@ -39,19 +37,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.mokee.security.Encryption;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
 
-public class OpenWeatherMapProviderService extends WeatherProviderService
-        implements SharedPreferences.OnSharedPreferenceChangeListener{
+public class OpenWeatherMapProviderService extends WeatherProviderService {
 
     private Context mContext;
     private String mAPIKey;
 
-    private static final String API_KEY = "api_key";
     private static final String TAG = OpenWeatherMapProviderService.class.getSimpleName();
     private static final boolean DEBUG = false;
 
@@ -81,6 +79,17 @@ public class OpenWeatherMapProviderService extends WeatherProviderService
     @Override
     public void onCreate() {
         mContext = getApplicationContext();
+        mAPIKey = getApiKey();
+    }
+
+    private String getApiKey() {
+        try {
+            return new String(Encryption.decryptByPrivateKey(Encryption.toByte(mContext.getString(R.string.api_key))));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -484,28 +493,6 @@ public class OpenWeatherMapProviderService extends WeatherProviderService
         }
     }
 
-    @Override
-    public void onConnected() {
-        final SharedPreferences preferences
-                = PreferenceManager.getDefaultSharedPreferences(mContext);
-        preferences.registerOnSharedPreferenceChangeListener(this);
-        mAPIKey = preferences.getString(API_KEY, null);
-    }
-
-    @Override
-    public void onDisconnected() {
-        final SharedPreferences preferences
-                = PreferenceManager.getDefaultSharedPreferences(mContext);
-        preferences.unregisterOnSharedPreferenceChangeListener(this);
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(API_KEY)) {
-            if (DEBUG) Log.d(TAG, "API key has changed");
-            mAPIKey = sharedPreferences.getString(key, null);
-        }
-    }
     private static final HashMap<String, Integer> ICON_MAPPING = new HashMap<>();
     static {
         ICON_MAPPING.put("01d", WeatherContract.WeatherColumns.WeatherCode.SUNNY);

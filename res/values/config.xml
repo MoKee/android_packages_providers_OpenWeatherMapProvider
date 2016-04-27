@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2016 The MoKee Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <string name="api_key" translatable="false">60C303D0429207EC3F580EF527F2C14E8E86317E2F931550F89ED5A04B52441036F55892A4483D640503B11EA99811590CB510F0D09A3A140319931EDD6A945C44A615D1B7DB1F6B1DEBACEFD65AEB2281A4AEB32AEFDDE86096878D3792000B67FED3CEF14D640E83BF422803A8C63D16D59ACA9D0127F71C1F5F3923772E92</string>
+
+</resources>
