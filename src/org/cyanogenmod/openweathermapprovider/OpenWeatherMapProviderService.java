@@ -26,15 +26,15 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
-import cyanogenmod.providers.WeatherContract;
-import cyanogenmod.weather.CMWeatherManager;
-import cyanogenmod.weather.RequestInfo;
-import cyanogenmod.weather.WeatherInfo;
-import cyanogenmod.weather.WeatherInfo.DayForecast;
-import cyanogenmod.weather.WeatherLocation;
-import cyanogenmod.weatherservice.ServiceRequest;
-import cyanogenmod.weatherservice.ServiceRequestResult;
-import cyanogenmod.weatherservice.WeatherProviderService;
+import mokee.providers.WeatherContract;
+import mokee.weather.MKWeatherManager;
+import mokee.weather.RequestInfo;
+import mokee.weather.WeatherInfo;
+import mokee.weather.WeatherInfo.DayForecast;
+import mokee.weather.WeatherLocation;
+import mokee.weatherservice.ServiceRequest;
+import mokee.weatherservice.ServiceRequestResult;
+import mokee.weatherservice.WeatherProviderService;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -100,7 +100,7 @@ public class OpenWeatherMapProviderService extends WeatherProviderService
                     || (requestType == RequestInfo.TYPE_WEATHER_BY_WEATHER_LOCATION_REQ &&
                         isSameWeatherLocation(requestInfo.getWeatherLocation(),
                                 mLastWeatherLocation))) && requestSubmittedTooSoon()) {
-            request.reject(CMWeatherManager.RequestStatus.SUBMITTED_TOO_SOON);
+            request.reject(MKWeatherManager.RequestStatus.SUBMITTED_TOO_SOON);
             return;
         }
 
