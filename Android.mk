@@ -24,4 +24,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_STATIC_JAVA_LIBRARIES := \
     org.mokee.platform.sdk
 
+LOCAL_AAPT_FLAGS := \
+    --rename-manifest-package org.mokee.openweathermapprovider
+
 include $(BUILD_PACKAGE)
