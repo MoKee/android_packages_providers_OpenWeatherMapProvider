@@ -196,7 +196,7 @@ public class OpenWeatherMapProviderService extends WeatherProviderService {
                 weatherInfo.setWind(wind.getDouble("speed"), wind.getDouble("deg"),
                         WeatherContract.WeatherColumns.WindSpeedUnit.KPH);
                 weatherInfo.setTodaysLow(sanitizeTemperature(main.getDouble("temp_min"), true));
-                weatherInfo.setTodaysLow(sanitizeTemperature(main.getDouble("temp_max"), true));
+                weatherInfo.setTodaysHigh(sanitizeTemperature(main.getDouble("temp_max"), true));
                 //NOTE: The timestamp provided by OpenWeatherMap corresponds to the time the data
                 //was last updated by the stations. Let's use System.currentTimeMillis instead
                 weatherInfo.setTimestamp(System.currentTimeMillis());
