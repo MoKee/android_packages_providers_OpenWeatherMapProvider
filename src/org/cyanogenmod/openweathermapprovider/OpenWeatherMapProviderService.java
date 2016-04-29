@@ -51,7 +51,7 @@ public class OpenWeatherMapProviderService extends WeatherProviderService {
     private static final String TAG = OpenWeatherMapProviderService.class.getSimpleName();
     private static final boolean DEBUG = false;
 
-    private static final int FORECAST_DAYS = 5;
+    private static final int FORECAST_DAYS = 4;
     private static final String URL_PARAM_LATITUDE_LONGITUDE = "lat=%f&lon=%f";
     private static final String URL_PARAM_CITY_ID = "id=%s";
 
